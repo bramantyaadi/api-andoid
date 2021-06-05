@@ -97,4 +97,22 @@ class AntrianController extends Controller
             ]);
         }
     }
+    public function last(Request $request)
+    {
+        try {
+            $data = antrian::whereRaw('jam_dipanggil is null')->first();
+            $data_last = $data->idx - 1;
+            $data_query_last = antrian::findOrFail($data_last);
+            return response()->json([
+                "response" => "complete",
+                "status" => 200,
+                "data" => $data_query_last
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                "response" => "fail",
+                "status" => 500
+            ]);
+        }
+    }
 }

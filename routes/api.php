@@ -24,5 +24,6 @@ Route::get('/antrian', 'Api\AntrianController@index');
 Route::post('/antrian' , 'Api\AntrianController@store');
 Route::get('/antrian/{id}', 'Api\AntrianController@show');
 Route::put('/antrian', 'Api\AntrianController@update');
+Route::get('/lastcall/antrian', 'Api\AntrianController@last');
 
 
