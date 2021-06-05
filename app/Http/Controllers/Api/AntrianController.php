@@ -29,14 +29,16 @@ class AntrianController extends Controller
     {
         try {
             $data_max = antrian::max('index')+1;
-            if($data_max >= 10){
+            if($data_max >= 100){
+                $nomor_antrian = "A".$data_max;
+            }
+            else if($data_max >= 10){
                 $nomor_antrian = "A0".$data_max;
             }
+            
             else if ($data_max < 10 ) {
                 $nomor_antrian = "A00".$data_max;
             }
-
-
             try {
                 $antrian = new antrian;
                 $antrian->index = $data_max;
