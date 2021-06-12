@@ -15,13 +15,14 @@ class AntrianController extends Controller
             return response()
                 ->json([
                     'response' => "complete",
-                    'status' => 200,
-                    'data' => $data
+                    'message' => "Getting Items Success",
+                    'code' => 200,
+                    'items' => $data
                 ]);
         } catch (\Throwable $th) {
             return response()
                 ->json([
-                    'status' => 500
+                    'code' => 500
                 ]);
         }
     }
@@ -71,9 +72,11 @@ class AntrianController extends Controller
             return response()->json([
                 "response" => "complete",
                 "status" => 200,
-                "data" => $data
+                "nomor_antrian" => $data['nomor_antrian'],
+                "jam_dipanggil" => $data['jam_dibuat']
             ]);
         } catch (\Throwable $th) {
+            return $th;
             return response()->json([
                 "response" => "fail",
                 "status" => 500
@@ -106,7 +109,9 @@ class AntrianController extends Controller
             return response()->json([
                 "response" => "complete",
                 "status" => 200,
-                "data" => $data_query_last
+                "nomor_antrian" => $data_query_last['nomor_antrian'],
+                "jam_dibuat" => $data_query_last['jam_dibuat'],
+                "jam_dipanggil" => $data_query_last['jam_dipanggil'],
             ]);
         } catch (\Throwable $th) {
             return response()->json([
